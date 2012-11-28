@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Copyright:	Dit document is eigendom van Platform BISON onder de Stichting Connekt,-->
+<!--            en wordt gepubliceerd onder de Creative Commons Licentie by-nd/3.0/nl, -->
+<!--            zie http://creativecommons.org/licences/by-nd/3.0/nl                   -->
+<!-- Opmerking: XSD is gebaseerd op TMI8 koppelvlak 15 versie 8.1.0.0                  -->
+<!-- Versie:   1.0 (release)   (11-05-2010)                                            -->
+<!-- Historie:                                                                         -->
+<!--          0.1: initiele versie gebaseerd op concept b									     				 -->
+<!--          0.2: tweede versie gebaseerd op concept c	        								  		 -->
+<!--          0.3: derde versie gebaseerd op concept f	        									  	 -->
+<!--          0.4: vierde versie gebaseerd op draft g  	        											 -->
+<!--          0.5: vijfde versie gebaseerd op draft h	          											 -->
+<!--          0.6: vijfde versie gebaseerd op draft i	          											 -->
+<!--          1.0: definitieve versie	          										 									 -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tmi8="http://bison.connekt.nl/tmi8/kv15/msg" xmlns:tmi8c="http://bison.connekt.nl/tmi8/kv15/core" targetNamespace="http://bison.connekt.nl/tmi8/kv15/msg" elementFormDefault="qualified">
+	<xs:import namespace="http://bison.connekt.nl/tmi8/kv15/core" schemaLocation="kv15-core.xsd"/>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- TMI KV15 messages                                                                -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<xs:element name="VV_TM_PUSH">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="tmi8:MessageProperties"/>
+				<xs:element name="KV15messages" type="tmi8:KV15messagesType" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="VV_TM_REQ">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="tmi8:MessageProperties"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="VV_TM_RES">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="tmi8:MessageProperties" minOccurs="0"/>
+				<xs:element name="ResponseCode" type="tmi8:ResponseCodeType"/>
+				<xs:element name="ResponseError" type="tmi8:ResponseErrorType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TM_VV_ERR">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="tmi8:MessageProperties"/>
+				<xs:element name="ResponseCode" type="tmi8:ResponseCodeType"/>
+				<xs:element name="ResponseError" type="tmi8:ResponseErrorType" minOccurs="0"/>
+				<xs:element name="KV15messagesError" type="tmi8:KV15messagesErrorType" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- Dossiers: KV15messages                                                            -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<xs:complexType name="KV15messagesType">
+		<xs:sequence>
+			<xs:choice>
+				<xs:sequence minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="STOPMESSAGE" type="tmi8:STOPMESSAGEType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="DELETEMESSAGE" type="tmi8:DELETEMESSAGEType" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:choice>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="tmi8c:delimiter"/>
+				<xs:any namespace="##targetNamespace ##local" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- Dossiers: KV15messagesError                                                       -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<xs:complexType name="KV15messagesErrorType">
+		<xs:sequence>
+			<xs:element name="STOPERRORMESSAGE" type="tmi8:STOPERRORMESSAGEType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="tmi8c:delimiter"/>
+				<xs:any namespace="##targetNamespace ##local" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- Message entities                                                          -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<xs:complexType name="STOPMESSAGEType">
+		<xs:sequence>
+			<xs:element name="dataownercode" type="tmi8:dataownercodeType"/>
+			<xs:element name="messagecodedate" type="tmi8:tmidateType"/>
+			<xs:element name="messagecodenumber" type="tmi8:messagecodenumType"/>
+			<xs:element name="userstopcodes" type="tmi8:userstopcodesType"/>
+			<xs:element name="lineplanningnumbers" type="tmi8:lineplanningnumbersType" minOccurs="0"/>
+			<xs:element name="messagepriority" type="tmi8:messagepriorityType"/>
+			<xs:element name="messagetype" type="tmi8:messagetypeType"/>
+			<xs:element name="messagedurationtype" type="tmi8:messagedurationtypeType"/>
+			<xs:element name="messagestarttime" type="tmi8:tmidatetimeType"/>
+			<xs:element name="messageendtime" type="tmi8:tmidatetimeType" minOccurs="0"/>
+			<xs:element name="messagecontent" type="tmi8:contentType" minOccurs="0"/>
+			<xs:sequence minOccurs="0">
+				<xs:element name="reasontype" type="tmi8:sirisxcategoryType"/>
+				<xs:element name="subreasontype" type="tmi8:sirisxcodeType"/>
+			</xs:sequence>
+			<xs:element name="reasoncontent" type="tmi8:contentType" minOccurs="0"/>
+			<xs:sequence minOccurs="0">
+				<xs:element name="effecttype" type="tmi8:sirisxcategoryType"/>
+				<xs:element name="subeffecttype" type="tmi8:sirisxcodeType"/>
+			</xs:sequence>
+			<xs:element name="effectcontent" type="tmi8:contentType" minOccurs="0"/>
+			<xs:sequence minOccurs="0">
+				<xs:element name="measuretype" type="tmi8:sirisxcategoryType"/>
+				<xs:element name="submeasuretype" type="tmi8:sirisxcodeType"/>
+			</xs:sequence>
+			<xs:element name="measurecontent" type="tmi8:contentType" minOccurs="0"/>
+			<xs:sequence minOccurs="0">
+				<xs:element name="advicetype" type="tmi8:sirisxcategoryType"/>
+				<xs:element name="subadvicetype" type="tmi8:sirisxcodeType"/>
+			</xs:sequence>
+			<xs:element name="advicecontent" type="tmi8:contentType" minOccurs="0"/>
+			<xs:element name="messagetimestamp" type="tmi8:tmidatetimeType"/>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="tmi8c:delimiter"/>
+				<xs:any namespace="##targetNamespace ##local" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DELETEMESSAGEType">
+		<xs:sequence>
+			<xs:element name="dataownercode" type="tmi8:dataownercodeType"/>
+			<xs:element name="messagecodedate" type="tmi8:tmidateType"/>
+			<xs:element name="messagecodenumber" type="tmi8:messagecodenumType"/>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="tmi8c:delimiter"/>
+				<xs:any namespace="##targetNamespace ##local" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="STOPERRORMESSAGEType">
+		<xs:sequence>
+			<xs:element name="dataownercode" type="tmi8:dataownercodeType"/>
+			<xs:element name="messagecodedate" type="tmi8:tmidateType"/>
+			<xs:element name="messagecodenumber" type="tmi8:messagecodenumType"/>
+			<xs:element name="userstopcodes" type="tmi8:userstopcodesType" maxOccurs="unbounded"/>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="tmi8c:delimiter"/>
+				<xs:any namespace="##targetNamespace ##local" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="userstopcodesType">
+		<xs:sequence>
+			<xs:element name="userstopcode" type="tmi8:codeType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="lineplanningnumbersType">
+		<xs:sequence>
+			<xs:element name="lineplanningnumber" type="tmi8:lineplanningnumberType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- Message property types                                                            -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<xs:group name="MessageProperties">
+		<xs:sequence>
+			<xs:element name="SubscriberID" type="tmi8:SubscriberIDType"/>
+			<xs:element name="Version" type="tmi8:VersionType"/>
+			<xs:element name="DossierName" type="tmi8:DossierNameType"/>
+			<xs:element name="Timestamp" type="tmi8:TimestampType"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:simpleType name="DossierNameType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="KV15messages"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VersionType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SubscriberIDType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TimestampType">
+		<xs:restriction base="xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="ResponseCodeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="OK"/>
+			<xs:enumeration value="NOK"/>
+			<xs:enumeration value="SE"/>
+			<xs:enumeration value="NA"/>
+			<xs:enumeration value="PE"/>
+			<xs:enumeration value="IC"/>
+			<xs:enumeration value="AE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ResponseErrorType">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- Common entity types                                                               -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<xs:simpleType name="dataownercodeType">
+		<xs:annotation id="E1">
+			<xs:documentation xml:lang="nl">
+				Een en ander bepaalt volgens BISON enumeratie E1.
+				Op dit moment bekende waardes zijn:
+				Vervoerders: ARR, VTN, CXX, GVB, HTM, NS, RET, SYNTUS, QBUZZ, TCR,
+				Integrators:  ALGEMEEN, GOVI, RIG, SABIMOS, PRORAIL
+				maar elke waarde is toegestaan
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="codeType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tmidateType">
+		<xs:annotation>
+			<xs:documentation>Format: YYYY-MM-DD</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:date">
+			<xs:pattern value="\d{4}-\d{2}-\d{2}"/>
+			<!--
+			<xs:minLength value="10"/>
+			<xs:maxLength value="10"/> -->
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tmidatetimeType">
+		<xs:restriction base="xs:dateTime"/>
+	</xs:simpleType>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- General messages entity types                                                     -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<xs:simpleType name="messagecodenumType">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="journeymessagetypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DESTOVER"/>
+			<xs:enumeration value="DESTALTER"/>
+			<xs:enumeration value="JOURNALTER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="lineplanningnumberType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="messagepriorityType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CALAMITY"/>
+			<xs:enumeration value="PTPROCESS"/>
+			<xs:enumeration value="COMMERCIAL"/>
+			<xs:enumeration value="MISC"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="messagetypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="GENERAL"/>
+			<xs:enumeration value="ADDITIONAL"/>
+			<xs:enumeration value="OVERRULE"/>
+			<xs:enumeration value="BOTTOMLINE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="messagedurationtypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="REMOVE"/>
+			<xs:enumeration value="FIRSTVEJO"/>
+			<xs:enumeration value="ENDTIME"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="contentType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="sirisxcategoryType">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="sirisxcodeType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+			<xs:pattern value="[\d|_]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+</xs:schema>
