@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-<!-- Copyright: Dit document is eigendom van Platform BISON onder de Stichting Connekt,  -->
-<!--            en wordt gepubliceerd onder de Creative Commons Licentie by-nd/3.0/nl,   -->
-<!--            zie http://creativecommons.org/licences/by-nd/3.0/nl                     -->
-<!-- Opmerking: XSD is gebaseerd op TMI8 koppelvlak 15 versie 8.1.3 (2017)               -->
-<!-- Historie:                                                                           -->
-<!--          0.1: initiele versie gebaseerd op concept b                                -->
-<!--          0.2: tweede versie gebaseerd op concept c                                  -->
-<!--          0.3: derde versie gebaseerd op concept f                                   -->
-<!--          0.4: vierde versie gebaseerd op draft g                                    -->
-<!--          0.5: vijfde versie gebaseerd op draft h                                    -->
-<!--          0.6: vijfde versie gebaseerd op draft i                                    -->
-<!--          0.7: zesde versie gebaseerd op release                                     -->
-<!-- v8.1.0.2: extending with messageurl                                                 -->
-<!-- v8.1.1.0: lineplanningnumbersType is nu in overeenstemming met documentatie: maxOccurs="unbound" -->
-<!-- v8.1.2.0: messagecodenumType aanpassing bereik, was 0-9999 (4*9), nu 0-99999 (5*9)  -->
-<!-- v8.1.3.0: messagecontent verplicht gemaakt                                          -->
-<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Copyright: Dit document is eigendom van Platform BISON onder de Stichting Connekt,      -->
+<!--            en wordt gepubliceerd onder de Creative Commons Licentie by-nd/3.0/nl,       -->
+<!--            zie http://creativecommons.org/licences/by-nd/3.0/nl                         -->
+<!-- Opmerking: Dit XSD is gebaseerd op TMI8 koppelvlak 15                                   -->
+<!--                                                                                         -->
+<!-- Versie:  8.2.0                                                                          -->
+<!--                                                                                         -->
+<!-- Historie:                                                                               -->
+<!--          0.1: initiele versie gebaseerd op concept b                                    -->
+<!--          0.2: tweede versie gebaseerd op concept c                                      -->
+<!--          0.3: derde versie gebaseerd op concept f                                       -->
+<!--          0.4: vierde versie gebaseerd op draft g                                        -->
+<!--          0.5: vijfde versie gebaseerd op draft h                                        -->
+<!--          0.6: vijfde versie gebaseerd op draft i                                        -->
+<!--          0.7: zesde versie gebaseerd op release                                         -->
+<!--   8.1.0.2: extending with messageurl                                                    -->
+<!--   8.1.1.0: lineplanningnumbersType conform documentatie: maxOccurs="unbound"            -->
+<!--   8.1.2.0: messagecodenumType aanpassing bereik, was 0-9999 (4*9), nu 0-99999 (5*9)     -->
+<!--   8.1.3.0: MessageContent verplicht gemaakt                                             -->
+<!--     8.2.0: MessageContent optioneel; ClearMessage,ShowOverviewDisplay,MessageTitle erbij-->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tmi8="http://bison.connekt.nl/tmi8/kv15/msg" xmlns:tmi8c="http://bison.connekt.nl/tmi8/kv15/core" targetNamespace="http://bison.connekt.nl/tmi8/kv15/msg" elementFormDefault="qualified">
 	<xs:import namespace="http://bison.connekt.nl/tmi8/kv15/core" schemaLocation="kv15-core.xsd"/>
-	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<!-- TMI KV15 messages                                                    -->
-	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- TMI KV15 messages                                                     -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<xs:element name="VV_TM_PUSH">
 		<xs:complexType>
 			<xs:sequence>
@@ -56,9 +60,9 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<!-- Dossiers: KV15messages                                            -->
-	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- Dossiers: KV15messages                                                -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<xs:complexType name="KV15messagesType">
 		<xs:sequence>
 			<xs:choice>
@@ -73,9 +77,9 @@
 			</xs:sequence>
 		</xs:sequence>
 	</xs:complexType>
-	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<!-- Dossiers: KV15messagesError                                     -->
-	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- Dossiers: KV15messagesError                                           -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<xs:complexType name="KV15messagesErrorType">
 		<xs:sequence>
 			<xs:element name="STOPERRORMESSAGE" type="tmi8:STOPERRORMESSAGEType" minOccurs="0" maxOccurs="unbounded"/>
@@ -85,9 +89,9 @@
 			</xs:sequence>
 		</xs:sequence>
 	</xs:complexType>
-	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<!-- Message entities                                                         -->
-	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- Message entities                                                      -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<xs:complexType name="STOPMESSAGEType">
 		<xs:sequence>
 			<xs:element name="dataownercode" type="tmi8:dataownercodeType"/>
@@ -96,11 +100,19 @@
 			<xs:element name="userstopcodes" type="tmi8:userstopcodesType"/>
 			<xs:element name="lineplanningnumbers" type="tmi8:lineplanningnumbersType" minOccurs="0"/>
 			<xs:element name="messagepriority" type="tmi8:messagepriorityType"/>
-			<xs:element name="messagetype" type="tmi8:messagetypeType"/>
+			<xs:element name="messagetype" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="tmi8:messagetypeType">
+							<xs:attribute name="clearmessage" type="tmi8:tmibooleanType" use="optional" default="false"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="messagedurationtype" type="tmi8:messagedurationtypeType"/>
 			<xs:element name="messagestarttime" type="tmi8:tmidatetimeType"/>
 			<xs:element name="messageendtime" type="tmi8:tmidatetimeType" minOccurs="0"/>
-			<xs:element name="messagecontent" type="tmi8:contentType"/>
+			<xs:element name="messagecontent" type="tmi8:contentType" minOccurs="0"/>
 			<xs:sequence minOccurs="0">
 				<xs:element name="reasontype" type="tmi8:sirisxcategoryType"/>
 				<xs:element name="subreasontype" type="tmi8:sirisxcodeType"/>
@@ -122,10 +134,18 @@
 			</xs:sequence>
 			<xs:element name="advicecontent" type="tmi8:contentType" minOccurs="0"/>
 			<xs:element name="messagetimestamp" type="tmi8:tmidatetimeType"/>
-			<xs:sequence>
-				<xs:element ref="tmi8c:delimiter"/>
-				<xs:element name="messageurl" type="tmi8:messageurlType" minOccurs="0"/>
-			</xs:sequence>
+			<xs:element ref="tmi8c:delimiter"/>
+			<xs:element name="messageurl" type="tmi8:messageurlType" minOccurs="0"/>
+			<xs:element name="messagetitle" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="separatetitle" type="tmi8:tmibooleanType" use="optional" default="true"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="showoverviewdisplay" type="tmi8:messageshowType" default="true" minOccurs="0"/>
 			<xs:sequence minOccurs="0" maxOccurs="unbounded">
 				<xs:element ref="tmi8c:delimiter"/>
 				<xs:any namespace="##targetNamespace ##local" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
@@ -165,9 +185,9 @@
 			<xs:element name="lineplanningnumber" type="tmi8:lineplanningnumberType" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<!-- Message property types                                               -->
-	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- Message property types                                                -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<xs:group name="MessageProperties">
 		<xs:sequence>
 			<xs:element name="SubscriberID" type="tmi8:SubscriberIDType"/>
@@ -210,9 +230,9 @@
 	<xs:simpleType name="ResponseErrorType">
 		<xs:restriction base="xs:string"/>
 	</xs:simpleType>
-	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<!-- Common entity types                                                   -->
-	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<xs:simpleType name="dataownercodeType">
 		<xs:annotation id="E1">
 			<xs:documentation xml:lang="nl">
@@ -248,13 +268,15 @@
 	<xs:simpleType name="tmidatetimeType">
 		<xs:restriction base="xs:dateTime"/>
 	</xs:simpleType>
-	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<!-- General messages entity types                                     -->
-	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<xs:simpleType name="tmibooleanType">
+		<xs:restriction base="xs:boolean"/>
+	</xs:simpleType>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- General messages entity types                                         -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<xs:simpleType name="messagecodenumType">
 		<xs:restriction base="xs:int">
 			<xs:minInclusive value="0"/>
-			<xs:maxInclusive value="99999"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="journeymessagetypeType">
@@ -279,6 +301,9 @@
 	</xs:simpleType>
 	<xs:simpleType name="messagetypeType">
 		<xs:restriction base="xs:string">
+			<xs:annotation>
+				<xs:documentation>alleen OVERRULE heeft nog functionele betekenis</xs:documentation>
+			</xs:annotation>
 			<xs:enumeration value="GENERAL"/>
 			<xs:enumeration value="ADDITIONAL"/>
 			<xs:enumeration value="OVERRULE"/>
@@ -314,6 +339,13 @@
 			<xs:maxLength value="1024"/>
 			<xs:pattern value="[hH][tT][tT][pP][sS]?://.*"/>
 			<!-- http/https lower and uppercase and combinations like hTTpS:// -->
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="messageshowType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="only"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
