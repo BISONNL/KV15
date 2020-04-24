@@ -135,7 +135,6 @@
 			</xs:sequence>
 			<xs:element name="advicecontent" type="tmi8:contentType" minOccurs="0"/>
 			<xs:element name="messagetimestamp" type="tmi8:tmidatetimeType"/>
-			<xs:element ref="tmi8c:delimiter"/>
 			<xs:element name="messageurl" type="tmi8:messageurlType" minOccurs="0"/>
 			<xs:element name="messagetitle" minOccurs="0">
 				<xs:complexType>
