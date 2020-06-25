@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tmi8:TM_VV_ERR xsi:schemaLocation="http://bison.connekt.nl/tmi8/kv15/msg kv15.821-msg.xsd" xmlns:tmi8c="http://bison.connekt.nl/tmi8/kv15/core" xmlns:tmi8="http://bison.connekt.nl/tmi8/kv15/msg" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<tmi8:SubscriberID>BISON</tmi8:SubscriberID>
+	<tmi8:Version>8.2.1</tmi8:Version>
+	<tmi8:DossierName>KV15messages</tmi8:DossierName>
+	<tmi8:Timestamp>2020-05-07T09:30:47Z</tmi8:Timestamp>
+	<tmi8:ResponseCode>OK</tmi8:ResponseCode>
+	<tmi8:ResponseError>String</tmi8:ResponseError>
+	<tmi8:KV15messagesError>
+		<tmi8:STOPERRORMESSAGE>
+			<tmi8:dataownercode>VTN</tmi8:dataownercode>
+			<tmi8:messagecodedate>2020-05-07</tmi8:messagecodedate>
+			<tmi8:messagecodenumber>0</tmi8:messagecodenumber>
+			<tmi8:userstopcodes>
+				<tmi8:userstopcode>1234567890</tmi8:userstopcode>
+				<tmi8:userstopcode>0123456789</tmi8:userstopcode>
+			</tmi8:userstopcodes>
+		</tmi8:STOPERRORMESSAGE>
+		<tmi8:STOPERRORMESSAGE>
+			<tmi8:dataownercode>VTN</tmi8:dataownercode>
+			<tmi8:messagecodedate>2020-05-07</tmi8:messagecodedate>
+			<tmi8:messagecodenumber>0</tmi8:messagecodenumber>
+			<tmi8:userstopcodes>
+				<tmi8:userstopcode>a</tmi8:userstopcode>
+			</tmi8:userstopcodes>
+		</tmi8:STOPERRORMESSAGE>
+	</tmi8:KV15messagesError>
+</tmi8:TM_VV_ERR>
