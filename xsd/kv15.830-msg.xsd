@@ -20,8 +20,9 @@
 <!--     8.2.0: MessageContent optioneel; ClearMessage,ShowOverviewDisplay,MessageTitle erbij-->
 <!--     8.2.0a: copyright aangepast                                                         -->
 <!--     8.2.1: delimiter optioneel i.v.m. compatibiliteit vorige versies                    -->
+<!--     8.3.0: extra waarde in enumeratie MessagePriority                                   -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tmi8="http://bison.connekt.nl/tmi8/kv15/msg" xmlns:tmi8c="http://bison.connekt.nl/tmi8/kv15/core" targetNamespace="http://bison.connekt.nl/tmi8/kv15/msg" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tmi8="http://bison.connekt.nl/tmi8/kv15/msg" xmlns:tmi8c="http://bison.connekt.nl/tmi8/kv15/core" targetNamespace="http://bison.connekt.nl/tmi8/kv15/msg" elementFormDefault="qualified" version="8.3.0">
 	<xs:import namespace="http://bison.connekt.nl/tmi8/kv15/core" schemaLocation="kv15-core.xsd"/>
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<!-- TMI KV15 messages                                                     -->
@@ -299,6 +300,11 @@
 			<xs:enumeration value="PTPROCESS"/>
 			<xs:enumeration value="COMMERCIAL"/>
 			<xs:enumeration value="MISC"/>
+			<xs:enumeration value="PASSENGER">
+				<xs:annotation>
+					<xs:documentation>bedoeld voor berichten die een actie van de reiziger communiceren</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="messagetypeType">
