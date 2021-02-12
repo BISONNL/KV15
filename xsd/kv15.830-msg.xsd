@@ -20,7 +20,7 @@
 <!--     8.2.0: MessageContent optioneel; ClearMessage,ShowOverviewDisplay,MessageTitle erbij-->
 <!--     8.2.0a: copyright aangepast                                                         -->
 <!--     8.2.1: delimiter optioneel i.v.m. compatibiliteit vorige versies                    -->
-<!--     8.3.0: extra waarde in enumeratie MessagePriority                                   -->
+<!--     8.3.0: MessagePriority waarde PASSENGER, messagecodenumType weer max.99999          -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tmi8="http://bison.connekt.nl/tmi8/kv15/msg" xmlns:tmi8c="http://bison.connekt.nl/tmi8/kv15/core" targetNamespace="http://bison.connekt.nl/tmi8/kv15/msg" elementFormDefault="qualified" version="8.3.0">
 	<xs:import namespace="http://bison.connekt.nl/tmi8/kv15/core" schemaLocation="kv15-core.xsd"/>
@@ -62,7 +62,7 @@
 		</xs:complexType>
 	</xs:element>
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<!-- Dossiers: KV15messages                                                -->
+	<!-- Dossier: KV15messages                                                 -->
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<xs:complexType name="KV15messagesType">
 		<xs:sequence>
@@ -79,7 +79,7 @@
 		</xs:sequence>
 	</xs:complexType>
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<!-- Dossiers: KV15messagesError                                           -->
+	<!-- Dossier: KV15messagesError                                            -->
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<xs:complexType name="KV15messagesErrorType">
 		<xs:sequence>
@@ -280,6 +280,7 @@
 	<xs:simpleType name="messagecodenumType">
 		<xs:restriction base="xs:int">
 			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99999"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="journeymessagetypeType">
